@@ -1,0 +1,24 @@
+{
+	"name" : "CoLab",
+	"description" : "A websocket application",
+	"version": "1.0.1",
+	"author": {
+		"name": "Oliver Ryan Chong",
+		"email": "oliver.chong55@gmail.com"
+	},
+	"dependencies" : {
+		"express" : "4.x.x",
+		"socket.io" : "1.0.x",
+		"async" : "0.9.0",
+		"rsvp" : "3.0.14",
+		"twit" : "1.1.18"
+	},
+	"engines" : {
+		"node" : "0.10.x"
+	},
+	"repository" : {
+		"type" : "git",
+		"url" : "git://github.com/Peanoquio/"
+	},
+	"license" : "MIT"
+}

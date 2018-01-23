@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link href='/public/common.css' rel='stylesheet'/>
+    <link href='/public/chat.css' rel='stylesheet'/>
+
+    <script src="/lib/jquery-1.11.1.min.js"></script>
+    
+</head>
+
+<body>
+    <!-- chat -->
+    <div id="chatArea">
+        <div id="nickname">
+            <form class="wrap" id="set-nickname">
+                <label for="nick">Please type in your nickname and press enter.</label>
+                <input id="nick" name="nick" type="text" placeholder="nickname" />
+                <p id="nickname-err">Nickname already in use</p>
+            </form>
+        </div>
+        <!--
+        <div id="connecting">
+            <div class="wrap">Connecting to socket.io server</div>
+        </div>
+        -->
+        <div id="status"></div>
+        <div id="messages">
+            <div id="nicknames"></div>
+            <div id="lines"></div>
+        </div>
+        <form id="send-message">
+            <input id="message" type="text" placeholder="enter message" />
+            <div>
+                <button value="" class="send">Send</button>
+                <div class="filebutton">Send Image<input type="file" id="imagefile" accept="image/*"></div>
+            </div>
+        </form>
+    </div>    
+
+    <!-- page specific javascript -->
+    <script src='/common/websocket_conn_obj.js'></script> 
+    <script src="/common/websocket_packet.js"></script>
+
+    <script src="/websocket_custom/websocket_manager_common.js"></script>
+    <script src="/websocket_custom/websocket_manager_client.js"></script>
+
+    <script src="/public/websocket_client.js"></script>
+    
+    <script src='/public/collab_ui.js'></script>
+
+    <script type="text/javascript">
+
+        var sSocketUrl = "ws://" + SocketObj.CONNECTION['HOST'] + ":" + SocketObj.CONNECTION['PORT'] + "/";
+
+        var aSocketSubProtocol = [ SocketObj.PROTOCOL['JSON'], SocketObj.PROTOCOL['BINARY'], SocketObj.PROTOCOL['CUSTOM'] ];
+
+        //initialize the class that will handle the client-side logic for websockets
+        var cSocketClient = new SocketClient( sSocketUrl, aSocketSubProtocol );        
+
+        //reference:
+        //http://stackoverflow.com/questions/4812686/closing-websocket-correctly-html5-javascript
+        window.onbeforeunload = cSocketClient.CloseWebSocketConn();
+
+    </script>
+
+</body>
+
+</html>

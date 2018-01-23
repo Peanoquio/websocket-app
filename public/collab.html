@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link href='/public/common.css' rel='stylesheet'/>
+    <link href='/public/chat.css' rel='stylesheet'/>
+    <link href='/public/draw.css' rel='stylesheet'/>
+    <link href='/public/tweet.css' rel='stylesheet'/>
+
+    <script src="/lib/jquery-1.11.1.min.js"></script>
+    <script src='/socket.io/socket.io.js'></script>       
+</head>
+
+<body>
+    <!-- Twitter board -->
+    <div id="twitBoard">
+        <div id="tweetArea">
+            <button value="" id="startStream" class="">Start</button>  
+            <button value="" id="stopStream" class="">Stop</button>  
+            <input id="filterStream" type="text" placeholder="search Twitter" />
+            <div id="tweets"></div>
+        </div>
+    </div>
+
+    <!-- chat -->
+    <div id="roomArea">
+        <div id="createRoomArea">
+            <button value="" id="createRoom" class="createRoom">Create Room</button>            
+            <input id="roomName" type="text" placeholder="enter room name" />
+        </div>
+        <div id="leaveRoomArea">
+            <button value="" id="leaveRoom" class="leaveRoom">Leave Room</button>
+            <div id="currentRoom"></div>
+        </div>
+        <div id="rooms"></div>
+    </div>
+    
+    <div id="chatArea">
+        <div id="nickname">
+            <form class="wrap" id="set-nickname">
+                <label for="nick">Please type in your nickname and press enter.</label>
+                <input id="nick" name="nick" type="text" placeholder="nickname" />
+                <p id="nickname-err">Nickname already in use</p>
+            </form>
+        </div>
+        <div id="connecting">
+            <div class="wrap">Connecting to socket.io server</div>
+        </div>
+        <div id="status"></div>
+        <div id="messages">
+            <div id="nicknames"></div>
+            <div id="lines"></div>
+        </div>
+        <form id="send-message">
+            <input id="message" type="text" placeholder="enter message" />
+            <div>
+                <button value="" class="send">Send</button>
+                <div class="filebutton">Send Image<input type="file" id="imagefile" accept="image/*"></div>
+            </div>
+        </form>
+    </div>    
+
+    <!-- Drawing board -->
+    <div id="drawingBoard">
+        <div id="drawAreaFrame">
+            <div id="cursors">
+                <!-- The mouse pointers will be created here -->
+            </div>
+            <canvas id="drawArea">Your browser needs to support canvas for this to work!</canvas>
+
+            <hgroup id="instructions">
+                <h1>Draw on the board!</h1>
+                <h2>You will see everyone else who's doing the same.</h2>
+                <h3>this is still work in progress...</h3>
+            </hgroup>
+        </div>        
+    </div>
+
+    <!-- page specific javascript -->
+    <script src='/common/websocket_conn_obj.js'></script> 
+    <script src='/public/collab_ui.js'></script>
+    <script src='/public/chat.js'></script>
+    <script src='/public/draw.js'></script>
+    <script src='/public/tweet.js'></script>
+
+</body>
+
+</html>
