@@ -21,7 +21,15 @@ npm install
 
 2. **Twitter stream support**  
 You also need to create a Twitter application for oauth credentials.<br />
-http://docs.inboundnow.com/guide/create-twitter-application/
+http://docs.inboundnow.com/guide/create-twitter-application/ <br />
+After doing so, you need to set the credentials found in this file `core/twitter_stream.js`. <br />
+```javascript
+// found in the function TwitHandler.prototype.Init
+var sConsumerKey = '<your credential>';
+var sConsumerSecret = '<your credential>';
+var sAccessTokenKey = '<your credential>';
+var sAccessTokenSecret = '<your credential>';
+```
 
 ## Usage
 Once you have the NodeJS server up and running, simply open `collab.html` through a web browser and you're good to go.
